@@ -97,7 +97,9 @@ impl<T: SetObject> CopyRequest<T> {
 
     pub fn create(&mut self, id: impl Into<String>) -> &mut T {
         let id = id.into();
-        self.create.insert(id.clone(), T::new(None));
+        let mut object = T::new(None);
+        object.set_id(Some(id.clone()));
+        self.create.insert(id.clone(), object);
         self.create.get_mut(&id).unwrap()
     }
 

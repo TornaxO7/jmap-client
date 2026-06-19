@@ -17,7 +17,7 @@ use crate::{
         response::{PushSubscriptionGetResponse, PushSubscriptionSetResponse},
         set::{SetObject, SetRequest},
     },
-    Method, Set, DataType,
+    DataType, Method, Set,
 };
 
 use super::{Keys, PushSubscription};

@@ -22,6 +22,7 @@ pub trait SetObject: Object {
 
     fn new(create_id: Option<usize>) -> Self;
     fn create_id(&self) -> Option<String>;
+    fn set_id(&mut self, _id: Option<String>) {}
 }
 
 #[derive(Debug, Clone, Serialize)]

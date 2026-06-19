@@ -1,3 +1,7 @@
+jmap-client 0.4.2
+================================
+- JMAP compliance fixes. 
+
 jmap-client 0.4.1
 ================================
 - Use `rustls-tls-native-roots` for TLS support.

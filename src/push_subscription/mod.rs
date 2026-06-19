@@ -21,7 +21,7 @@ use serde::{Deserialize, Serialize};
 use crate::core::changes::ChangesObject;
 use crate::core::set::list_not_set;
 use crate::core::Object;
-use crate::{Get, Set, DataType};
+use crate::{DataType, Get, Set};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PushSubscription<State = Get> {

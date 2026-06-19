@@ -240,6 +240,10 @@ impl SetObject for Email<Set> {
     fn create_id(&self) -> Option<String> {
         self._create_id.map(|id| format!("c{}", id))
     }
+
+    fn set_id(&mut self, id: Option<String>) {
+        self.id = id;
+    }
 }
 
 impl SetObject for Email<Get> {

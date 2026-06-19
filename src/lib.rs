@@ -224,6 +224,10 @@ pub enum URI {
     WebSocket,
     #[serde(rename = "urn:ietf:params:jmap:sieve")]
     Sieve,
+    #[serde(rename = "urn:ietf:params:jmap:blob")]
+    Blob,
+    #[serde(rename = "urn:ietf:params:jmap:quota")]
+    Quota,
     #[serde(rename = "urn:ietf:params:jmap:principals")]
     Principals,
     #[serde(rename = "urn:ietf:params:jmap:principals:owner")]
@@ -241,6 +245,8 @@ impl AsRef<str> for URI {
             URI::Calendars => "urn:ietf:params:jmap:calendars",
             URI::WebSocket => "urn:ietf:params:jmap:websocket",
             URI::Sieve => "urn:ietf:params:jmap:sieve",
+            URI::Blob => "urn:ietf:params:jmap:blob",
+            URI::Quota => "urn:ietf:params:jmap:quota",
             URI::Principals => "urn:ietf:params:jmap:principals",
             URI::PrincipalsOwner => "urn:ietf:params:jmap:principals:owner",
         }
