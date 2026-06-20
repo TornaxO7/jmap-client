@@ -108,7 +108,7 @@ impl Client {
         properties: Option<Vec<Property>>,
     ) -> crate::Result<Option<EmailSubmission>> {
         let mut request = self.build();
-        let get_request = request.get_email_submission().ids([id]);
+        let get_request = request.get_email_submission().ids(Some([id]));
         if let Some(properties) = properties {
             get_request.properties(properties);
         }

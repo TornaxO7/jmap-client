@@ -61,7 +61,7 @@ impl Client {
         properties: Option<Vec<Property>>,
     ) -> crate::Result<Option<Identity>> {
         let mut request = self.build();
-        let get_request = request.get_identity().ids([id]);
+        let get_request = request.get_identity().ids(Some([id]));
         if let Some(properties) = properties {
             get_request.properties(properties);
         }

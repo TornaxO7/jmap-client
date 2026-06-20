@@ -109,7 +109,7 @@ impl Client {
         properties: Option<impl IntoIterator<Item = Property>>,
     ) -> crate::Result<Option<VacationResponse>> {
         let mut request = self.build();
-        let get_request = request.get_vacation_response().ids(["singleton"]);
+        let get_request = request.get_vacation_response().ids(Some(["singleton"]));
         if let Some(properties) = properties {
             get_request.properties(properties);
         }

@@ -249,7 +249,7 @@ impl Client {
         properties: Option<impl IntoIterator<Item = Property>>,
     ) -> crate::Result<Option<Principal>> {
         let mut request = self.build();
-        let get_request = request.get_principal().ids([id]);
+        let get_request = request.get_principal().ids(Some([id]));
         if let Some(properties) = properties {
             get_request.properties(properties);
         }

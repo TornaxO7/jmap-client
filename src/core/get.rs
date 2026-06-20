@@ -85,12 +85,12 @@ impl<O: GetObject> GetRequest<O> {
         self
     }
 
-    pub fn ids<U, V>(&mut self, ids: U) -> &mut Self
+    pub fn ids<U, V>(&mut self, ids: Option<U>) -> &mut Self
     where
         U: IntoIterator<Item = V>,
         V: Into<String>,
     {
-        self.ids = Some(ids.into_iter().map(|v| v.into()).collect());
+        self.ids = ids.map(|ids| ids.into_iter().map(|v| v.into()).collect());
         self.ids_ref = None;
         self
     }

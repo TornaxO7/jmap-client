@@ -26,7 +26,7 @@ impl Client {
     #[maybe_async::maybe_async]
     pub async fn thread_get(&self, id: &str) -> crate::Result<Option<Thread>> {
         let mut request = self.build();
-        request.get_thread().ids([id]);
+        request.get_thread().ids(Some([id]));
         request
             .send_single::<ThreadGetResponse>()
             .await
