@@ -114,7 +114,7 @@ pub(crate) enum ACLPatch {
     Set(bool),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Default)]
+#[derive(Debug, Clone, PartialEq, Eq, Default, Hash)]
 pub enum Role {
     Archive,
     Drafts,
