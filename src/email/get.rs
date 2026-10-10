@@ -21,16 +21,16 @@ impl Email<Get> {
         self.id.as_deref()
     }
 
-    pub fn take_id(&mut self) -> String {
-        self.id.take().unwrap_or_default()
+    pub fn take_id(&mut self) -> Option<String> {
+        self.id.take()
     }
 
     pub fn blob_id(&self) -> Option<&str> {
         self.blob_id.as_deref()
     }
 
-    pub fn take_blob_id(&mut self) -> String {
-        self.blob_id.take().unwrap_or_default()
+    pub fn take_blob_id(&mut self) -> Option<String> {
+        self.blob_id.take()
     }
 
     pub fn thread_id(&self) -> Option<&str> {
@@ -41,32 +41,26 @@ impl Email<Get> {
         self.thread_id.take()
     }
 
-    pub fn mailbox_ids(&self) -> Vec<&str> {
-        self.mailbox_ids
-            .as_ref()
-            .map(|m| {
-                m.iter()
-                    .filter(|(_, v)| **v)
-                    .map(|(k, _)| k.as_str())
-                    .collect()
-            })
-            .unwrap_or_default()
+    pub fn mailbox_ids(&self) -> Option<Vec<&str>> {
+        self.mailbox_ids.as_ref().map(|m| {
+            m.iter()
+                .filter(|(_, v)| **v)
+                .map(|(k, _)| k.as_str())
+                .collect()
+        })
     }
 
-    pub fn keywords(&self) -> Vec<&str> {
-        self.keywords
-            .as_ref()
-            .map(|k| {
-                k.iter()
-                    .filter(|(_, v)| **v)
-                    .map(|(k, _)| k.as_str())
-                    .collect()
-            })
-            .unwrap_or_default()
+    pub fn keywords(&self) -> Option<Vec<&str>> {
+        self.keywords.as_ref().map(|k| {
+            k.iter()
+                .filter(|(_, v)| **v)
+                .map(|(k, _)| k.as_str())
+                .collect()
+        })
     }
 
-    pub fn size(&self) -> usize {
-        self.size.unwrap_or(0)
+    pub fn size(&self) -> Option<usize> {
+        self.size
     }
 
     pub fn received_at(&self) -> Option<i64> {
@@ -165,8 +159,8 @@ impl Email<Get> {
         self.attachments.as_deref()
     }
 
-    pub fn has_attachment(&self) -> bool {
-        *self.has_attachment.as_ref().unwrap_or(&false)
+    pub fn has_attachment(&self) -> Option<bool> {
+        self.has_attachment
     }
 
     pub fn header(&self, id: &Header) -> Option<&HeaderValue> {
@@ -200,8 +194,8 @@ impl EmailBodyPart<Get> {
         self.blob_id.as_deref()
     }
 
-    pub fn size(&self) -> usize {
-        *self.size.as_ref().unwrap_or(&0)
+    pub fn size(&self) -> Option<usize> {
+        self.size
     }
 
     pub fn headers(&self) -> Option<&[EmailHeader]> {
