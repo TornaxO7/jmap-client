@@ -26,8 +26,8 @@ impl Mailbox<Get> {
         self.name.as_deref()
     }
 
-    pub fn parent_id(&self) -> Option<&str> {
-        self.parent_id.as_deref()
+    pub fn parent_id(&self) -> Option<Option<String>> {
+        self.parent_id.clone()
     }
 
     pub fn role(&self) -> Option<Role> {

@@ -15,7 +15,7 @@ pub mod query;
 pub mod set;
 
 use crate::core::changes::ChangesObject;
-use crate::core::set::{map_not_set, string_not_set};
+use crate::core::set::map_not_set;
 use crate::core::Object;
 use crate::mailbox::set::role_not_set;
 use crate::principal::ACL;
@@ -62,8 +62,8 @@ pub struct Mailbox<State = Get> {
     name: Option<String>,
 
     #[serde(rename = "parentId")]
-    #[serde(skip_serializing_if = "string_not_set")]
-    parent_id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    parent_id: Option<Option<String>>,
 
     #[serde(rename = "role")]
     #[serde(skip_serializing_if = "role_not_set")]

@@ -20,12 +20,12 @@ impl Mailbox<Set> {
     }
 
     pub fn parent_id(&mut self, parent_id: Option<impl Into<String>>) -> &mut Self {
-        self.parent_id = parent_id.map(|s| s.into());
+        self.parent_id = Some(parent_id.map(|s| s.into()));
         self
     }
 
     pub fn parent_id_ref(&mut self, parent_id_ref: &str) -> &mut Self {
-        self.parent_id = format!("#{}", parent_id_ref).into();
+        self.parent_id = Some(format!("#{}", parent_id_ref).into());
         self
     }
 
@@ -91,7 +91,7 @@ impl SetObject for Mailbox<Set> {
             _state: Default::default(),
             id: None,
             name: None,
-            parent_id: "".to_string().into(),
+            parent_id: None,
             role: Role::None.into(),
             sort_order: None,
             total_emails: None,
