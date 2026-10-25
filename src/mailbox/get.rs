@@ -18,8 +18,8 @@ impl Mailbox<Get> {
         self.id.as_deref()
     }
 
-    pub fn take_id(&mut self) -> String {
-        self.id.take().unwrap_or_default()
+    pub fn take_id(&mut self) -> Option<String> {
+        self.id.take()
     }
 
     pub fn name(&self) -> Option<&str> {
@@ -30,32 +30,32 @@ impl Mailbox<Get> {
         self.parent_id.as_deref()
     }
 
-    pub fn role(&self) -> Role {
-        self.role.as_ref().cloned().unwrap_or(Role::None)
+    pub fn role(&self) -> Option<Role> {
+        self.role.clone()
     }
 
-    pub fn sort_order(&self) -> u32 {
-        self.sort_order.as_ref().copied().unwrap_or(0)
+    pub fn sort_order(&self) -> Option<u32> {
+        self.sort_order.clone()
     }
 
-    pub fn total_emails(&self) -> usize {
-        self.total_emails.as_ref().copied().unwrap_or(0)
+    pub fn total_emails(&self) -> Option<usize> {
+        self.total_emails.clone()
     }
 
-    pub fn unread_emails(&self) -> usize {
-        self.unread_emails.as_ref().copied().unwrap_or(0)
+    pub fn unread_emails(&self) -> Option<usize> {
+        self.unread_emails.clone()
     }
 
-    pub fn total_threads(&self) -> usize {
-        self.total_threads.as_ref().copied().unwrap_or(0)
+    pub fn total_threads(&self) -> Option<usize> {
+        self.total_threads.clone()
     }
 
-    pub fn unread_threads(&self) -> usize {
-        self.unread_threads.as_ref().copied().unwrap_or(0)
+    pub fn unread_threads(&self) -> Option<usize> {
+        self.unread_threads.clone()
     }
 
-    pub fn is_subscribed(&self) -> bool {
-        *self.is_subscribed.as_ref().unwrap_or(&false)
+    pub fn is_subscribed(&self) -> Option<bool> {
+        self.is_subscribed.clone()
     }
 
     pub fn my_rights(&self) -> Option<&MailboxRights> {
