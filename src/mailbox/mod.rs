@@ -62,6 +62,7 @@ pub struct Mailbox<State = Get> {
     name: Option<String>,
 
     #[serde(rename = "parentId")]
+    #[serde(default, deserialize_with = "deserialize_double_option")]
     #[serde(skip_serializing_if = "Option::is_none")]
     parent_id: Option<Option<String>>,
 
@@ -294,4 +295,11 @@ impl Serialize for Role {
             Role::None => "",
         })
     }
+}
+
+fn deserialize_double_option<'de, D>(deserializer: D) -> Result<Option<Option<String>>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    Option::<String>::deserialize(deserializer).map(Some)
 }
